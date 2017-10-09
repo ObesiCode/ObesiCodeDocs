@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Gegenereerd op: 09 okt 2017 om 08:18
+-- Gegenereerd op: 09 okt 2017 om 09:11
 -- Serverversie: 10.1.25-MariaDB
 -- PHP-versie: 7.1.7
 
@@ -113,9 +113,11 @@ INSERT INTO `tbl_log` (`Log_ID`, `log`, `created_at`, `updated_at`) VALUES
 
 CREATE TABLE `tbl_login` (
   `User_ID` int(11) NOT NULL,
-  `loginnaam` varchar(254) NOT NULL,
+  `name` varchar(254) NOT NULL,
   `password` varchar(254) NOT NULL,
-  `loginkey` int(11) NOT NULL
+  `remember_token` varchar(254) DEFAULT NULL,
+  `updated_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -369,6 +371,12 @@ ALTER TABLE `tbl_log`
   ADD PRIMARY KEY (`Log_ID`);
 
 --
+-- Indexen voor tabel `tbl_login`
+--
+ALTER TABLE `tbl_login`
+  ADD PRIMARY KEY (`User_ID`);
+
+--
 -- Indexen voor tabel `tbl_offertes`
 --
 ALTER TABLE `tbl_offertes`
@@ -394,6 +402,11 @@ ALTER TABLE `tbl_customers`
 --
 ALTER TABLE `tbl_log`
   MODIFY `Log_ID` int(254) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT voor een tabel `tbl_login`
+--
+ALTER TABLE `tbl_login`
+  MODIFY `User_ID` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT voor een tabel `tbl_offertes`
 --
